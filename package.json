@@ -1,0 +1,28 @@
+{
+  "name": "airwalkers-calendar-bot",
+  "version": "1.0.0",
+  "description": "Google calendar management with Slack commands",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "1.17.1",
+    "dotenv": "^4.0.0",
+    "express": "4.15.2"
+  },
+  "devDependencies": {
+    "nodemon": "1.11.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/air-walkers/calendar-bot"
+  },
+  "author": "Team Airwalkers <chemok78@gmail.com> (https://github.com/air-walkers/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/air-walkers/calendar-bot/issues"
+  },
+  "homepage": "https://github.com/air-walkers/calendar-bot/blob/master/README.md"
+}
