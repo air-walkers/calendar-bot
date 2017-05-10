@@ -16,6 +16,20 @@ const server = app.listen(process.env.PORT || 8080, () => {
 //HTTP POST route to handle slash command
 app.post('/', (req, res) => {
   // implement your bot here ...
+  let text = req.body.text;
+  
+  let data = {
+    response_type: 'in_channel', //public to the channel
+    text: 'test',
+    attachments:[
+      {
+        image_url: ''
+      }  
+    ]
+  };
+  
+  res.json(data);
+  
 });
 
 app.get('/slack/oauth', (req, res) => {
