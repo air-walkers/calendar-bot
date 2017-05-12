@@ -43,14 +43,10 @@ app.get('/slack/oauth', (req, res) => {
   };
 
   request.post('https://slack.com/api/oauth.access', data, (error, response, body) => {
-  //get authorisation token first  
     if (!error && response.statusCode == 200) {
       // You are done.
-      // If you want to get team info, you need to get the token here
-      let token = JSON.parse(body).access_token; // Auth token
-
       //get the team info and redirect to the team app management page
-      request.post('https://slack.com/api/team.info', {form: {token: token}}, (error, response, body) => {
+      request.post('https://slack.com/api/team.info', {form: {token: process.env.SLACK_OAUTH2_TOKEN}}, (error, response, body) => {
         if (!error && response.statusCode == 200) {
           if(JSON.parse(body).error == 'missing_scope') {
             res.send('Calendar Bot has been added to your team!');
@@ -63,7 +59,7 @@ app.get('/slack/oauth', (req, res) => {
       
       //get team list info from Slack API users.list method
       //for now this request is in the authorisation part
-      request.post('https://slack.com/api/users.list', {form: {token: token}}, (error, response, body) => {
+      request.post('https://slack.com/api/users.list', {form: {token: process.env.SLACK_OAUTH2_TOKEN}}, (error, response, body) => {
       /*Apps created after January 4th, 2017 must request both the users:read and users:read.email 
       OAuth permission scopes when using the OAuth app installation flow to enable access to the email field
       of user objects returned by this method.*/    
